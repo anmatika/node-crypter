@@ -6,7 +6,7 @@ const output = require('./outputter');
 const aes192 = require('./aes192');
 
 if (msg === undefined){
-    console.log(chalk.red('ERROR: Please give the msg msg.'));
+    console.log(chalk.red('ERROR: Please give the msg.'));
     process.exit(1);
 }
 

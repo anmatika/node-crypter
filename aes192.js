@@ -1,5 +1,4 @@
 const crypto = require('crypto');
-const q = require('q');
 
 const encrypt = (message, secret) => {
     const cipher = crypto.createCipher('aes192', secret || '');
@@ -10,7 +9,6 @@ const encrypt = (message, secret) => {
 };
 
 const decrypt = (hash, secret) => {
-    const deferred = q.defer();
     const decipher = crypto.createDecipher('aes192', secret || '');
 
     let decrypted = '';
@@ -20,16 +18,19 @@ const decrypt = (hash, secret) => {
             decrypted += data.toString('utf8');
         }
     });
-    decipher.on('end', () => {
-        deferred.resolve(decrypted);
-    });
-    decipher.on('error', (err) => {
-        deferred.reject('ERROR: aes192 decrypt failed.');
+
+    const promise = new Promise((resolve, reject) => {
+        decipher.on('end', () => {
+            resolve(decrypted);
+        });
+        decipher.on('error', (err) => {
+            reject('ERROR: aes192 decrypt failed.');
+        });
     });
 
     decipher.write(hash, 'hex');
     decipher.end();
-    return deferred.promise;
+    return promise;
 };
 
 module.exports.encrypt = encrypt;

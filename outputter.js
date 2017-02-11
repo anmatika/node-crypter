@@ -2,9 +2,9 @@ const chalk = require('chalk');
 const aes192 = require('./aes192');
 
 function outputDecryptedAes192(text, salt) {
-    aes192.decrypt(text, salt)
+    return aes192.decrypt(text, salt)
         .then(d => console.log(chalk.gray('Aes192: ') + chalk.green(d)))
-        .catch(e => console.log(chalk.red('ERROR: Aes192 decrypt failed.', e)));
+        .catch(e => console.log(chalk.red(e)));
 }
 
 function outputEncryptedAes192(text, salt) {
