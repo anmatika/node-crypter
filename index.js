@@ -13,9 +13,26 @@ if (msg === undefined){
 run();
 
 function run() {
-    outputHashes(msg);
+    const opts = getCommandlineOptions();
+    outputHashes(msg, opts);
 }
 
-function outputHashes(msg){
-    output.outputDecryptedAes192(msg,'salt');
+function getCommandlineOptions() {
+    const options = [
+        { name: 'encrypt', type: 'bool' },
+        { name: 'decrypt', type: 'bool' },
+        { name: 'salt', type: 'string' }
+    ];
+    const opts = dashdash.parse({options: options});
+    return opts;
+}
+function outputHashes(text, opts){
+    debugger;
+    if (opts.decrypt){
+        output.outputDecryptedAes192(text, opts.salt);
+        return;
+    }
+
+    output.outputEncryptedAes192(text, opts.salt);
+    return;
 }
