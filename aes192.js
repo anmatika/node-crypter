@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const logger = require('./logger');
 
 const encrypt = (message, secret) => {
     const cipher = crypto.createCipher('aes192', secret || '');
@@ -24,6 +25,8 @@ const decrypt = (hash, secret) => {
             resolve(decrypted);
         });
         decipher.on('error', (err) => {
+            logger.log('error', err);
+
             reject('ERROR: aes192 decrypt failed.');
         });
     });
