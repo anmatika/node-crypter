@@ -6,6 +6,7 @@ const encrypt = (message, secret) => {
 
     let hash = cipher.update(message, 'utf8', 'hex');
     hash += cipher.final('hex');
+    logger.log('info', hash);
     return hash;
 };
 

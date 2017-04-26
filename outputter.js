@@ -9,7 +9,7 @@ function outputDecryptedAes192(text, salt) {
 
 function outputEncryptedAes192(text, salt) {
     const hash = aes192.encrypt(text, salt);
-    console.log(chalk.gray('decrypted Aes192 message: ') + chalk.green(hash));
+    console.log(chalk.gray(`text ${text} encrypted with salt: ${salt} Aes192 as: \n`) + chalk.green(hash));
 }
 
 module.exports.outputDecryptedAes192 = outputDecryptedAes192;

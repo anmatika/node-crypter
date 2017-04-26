@@ -1,3 +1,11 @@
+/*
+  USAGE:
+    encrypt
+      node index.js foo --encrypt --salt "bar"
+    decrypt
+      node index.js 80a7dd847ac22852b5f83d8145386b94 --decrypt --salt "bar"
+*/
+
 const chalk = require('chalk');
 const dashdash = require('dashdash');
 const msg = process.argv[2];
