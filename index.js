@@ -1,9 +1,9 @@
 /*
   USAGE:
     encrypt
-      node index.js foo --encrypt --salt "bar"
+      node index.js "foo bar" --encrypt --salt "bar"
     decrypt
-      node index.js 80a7dd847ac22852b5f83d8145386b94 --decrypt --salt "bar"
+      node index.js a94237ddb77cfe1faface0fe1b9773f3 --decrypt --salt "bar"
 */
 
 const chalk = require('chalk');
