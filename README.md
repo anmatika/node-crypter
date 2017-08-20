@@ -1,7 +1,7 @@
 # Encrypts / Decrypts with AES192
 
 ## Install
-    npm i -g node-crypter
+    npm i -g crypter-node
 
 ## USAGE example:
 ### encrypt
