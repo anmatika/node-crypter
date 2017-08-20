@@ -6,7 +6,9 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha tests/**/*.js"
   },
-  "bin": "bin/crypter.js",
+  "bin": { 
+    "crypter-node": "./bin/crypter.js" 
+  },
   "author": "Antti Matikainen <4ntti.matikainen@gmail.com> (http://yourblog.com)",
   "license": "ISC",
   "dependencies": {
