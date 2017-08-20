@@ -11,33 +11,33 @@ const dashdash = require('dashdash');
 const msg = process.argv[2];
 
 const output = require('./outputter');
-const aes192 = require('./aes192');
 
 function getCommandlineOptions() {
-    const options = [
+  const options = [
         { name: 'encrypt', type: 'bool' },
+        { name: 'e', type: 'bool' },
         { name: 'decrypt', type: 'bool' },
-        { name: 'salt', type: 'string' }
-    ];
-    const opts = dashdash.parse({options: options});
-    return opts;
+        { name: 'd', type: 'bool' },
+        { name: 'salt', type: 'string' },
+        { name: 's', type: 'string' },
+  ];
+  const opts = dashdash.parse({ options });
+  return opts;
 }
 
-function outputHashes(text, opts){
-    debugger;
-    if (opts.decrypt){
-        output.outputDecryptedAes192(text, opts.salt);
-        return;
-    }
-
-    output.outputEncryptedAes192(text, opts.salt);
+function outputHashes(text, opts) {
+  if (opts.decrypt || opts.d) {
+    output.outputDecryptedAes192(text, opts.salt || opts.s);
     return;
+  }
+
+  output.outputEncryptedAes192(text, opts.salt || opts.s);
+  return;
 }
 
-if (msg === undefined){
+if (msg === undefined) {
   console.log(chalk.red('ERROR: Please give the msg.'));
   process.exit(1);
-
 }
 
 const opts = getCommandlineOptions();

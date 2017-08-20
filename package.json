@@ -1,6 +1,6 @@
 {
-  "name": "crypter",
-  "version": "1.0.0",
+  "name": "crypter-node",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "author": "Antti Matikainen <4ntti.matikainen@gmail.com> (http://yourblog.com)",
   "license": "ISC",
   "dependencies": {
+    "aes192-node": "^1.0.2",
     "chalk": "^1.1.3",
     "dashdash": "^1.14.1",
     "fs": "0.0.1-security",
