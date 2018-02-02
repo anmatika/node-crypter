@@ -8,24 +8,34 @@
 
 const chalk = require('chalk');
 const dashdash = require('dashdash');
+
 const msg = process.argv[2];
 
 const output = require('./outputter');
 
 function getCommandlineOptions() {
   const options = [
-        { name: 'encrypt', type: 'bool' },
-        { name: 'e', type: 'bool' },
-        { name: 'decrypt', type: 'bool' },
-        { name: 'd', type: 'bool' },
-        { name: 'salt', type: 'string' },
-        { name: 's', type: 'string' },
+    { name: 'encrypt', type: 'bool' },
+    { name: 'e', type: 'bool' },
+    { name: 'decrypt', type: 'bool' },
+    { name: 'd', type: 'bool' },
+    { name: 'salt', type: 'string' },
+    { name: 's', type: 'string' },
+    { name: 'help', type: 'bool' },
+    { name: 'h', type: 'bool' },
   ];
   const opts = dashdash.parse({ options });
   return opts;
 }
 
 function outputHashes(text, opts) {
+  if (opts.help || opts.h) {
+    console.log(
+      'USAGE:\n\n Encrypt:\n crypter <msg> -e -s <secret>\n\n Decrypt:\n crypter <hash> -d -s <secret>'
+    );
+    return;
+  }
+
   if (opts.decrypt || opts.d) {
     output.outputDecryptedAes192(text, opts.salt || opts.s);
     return;

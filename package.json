@@ -1,14 +1,14 @@
 {
   "name": "crypter-node",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha tests/**/*.js"
   },
-  "bin": { 
+  "bin": {
     "crypter-node": "./bin/crypter.js",
-    "crypter": "./bin/crypter.js" 
+    "crypter": "./bin/crypter.js"
   },
   "author": "Antti Matikainen <4ntti.matikainen@gmail.com> (http://yourblog.com)",
   "license": "ISC",
